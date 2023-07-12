@@ -1,0 +1,97 @@
+Question 4) Build a responsive Navbar, on smaller screens it should be a hamburger menu which on click should reveal the menu items nicely, and on larger screens they should be displayed directly on the screen.
+
+Answer) Code -
+
+  HTML - 
+  <!DOCTYPE html>
+<html>
+<head>
+  <title>Responsive Navbar</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+  <nav>
+    <div class="logo">
+      <a href="#">Logo</a>
+    </div>
+    <ul class="nav-links">
+      <li><a href="#">Home</a></li>
+      <li><a href="#">About</a></li>
+      <li><a href="#">Services</a></li>
+      <li><a href="#">Contact</a></li>
+    </ul>
+    <div class="burger">
+      <div class="line"></div>
+      <div class="line"></div>
+      <div class="line"></div>
+    </div>
+  </nav>
+
+  <script src="script.js"></script>
+</body>
+</html>
+
+  CSS - 
+  
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  background-color: #333;
+  color: #fff;
+}
+
+.nav-links {
+  display: flex;
+  justify-content: space-around;
+  width: 50%;
+}
+
+.nav-links li {
+  list-style: none;
+}
+
+.nav-links a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.burger {
+  display: none;
+  cursor: pointer;
+}
+
+.burger div {
+  width: 25px;
+  height: 3px;
+  background-color: #fff;
+  margin: 5px;
+  transition: all 0.3s ease;
+}
+@media screen and (max-width: 768px) {
+  .nav-links {
+    display: none;
+    width: 100%;
+  }
+
+  .nav-links li {
+    text-align: center;
+    margin: 10px 0;
+  }
+
+  .burger {
+    display: block;
+  }
+}
+
+JavaScript - 
+
+var burger = document.querySelector('.burger');
+var navLinks = document.querySelector('.nav-links');
+
+burger.addEventListener('click', function() {
+  navLinks.classList.toggle('nav-active');
+});
+
+  
