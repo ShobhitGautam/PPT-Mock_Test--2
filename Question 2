@@ -1,0 +1,49 @@
+Question 2) Create a app where you have an input box and whenever a user types something in the input box and hits submit it should be added on the webpage below the input box
+
+Answer) Code - 
+
+HTML - 
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Dynamic Text Input</title>
+  <style>
+    #inputBox {
+      margin-bottom: 10px;
+    }
+
+    #textList {
+      list-style-type: none;
+      padding: 0;
+    }
+  </style>
+</head>
+<body>
+  <input type="text" id="inputBox" placeholder="Enter text">
+  <button id="submitButton">Submit</button>
+  <ul id="textList"></ul>
+
+  <script src="script.js"></script>
+</body>
+</html>
+
+Javascript - 
+
+var inputBox = document.getElementById('inputBox');
+var submitButton = document.getElementById('submitButton');
+var textList = document.getElementById('textList');
+
+
+submitButton.addEventListener('click', function() {
+  
+  var enteredText = inputBox.value;
+
+  
+  var listItem = document.createElement('li');
+  listItem.textContent = enteredText;
+
+  textList.appendChild(listItem);
+
+  inputBox.value = '';
+});
+
