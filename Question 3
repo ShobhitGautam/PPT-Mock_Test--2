@@ -1,0 +1,63 @@
+Question 3)  Fetch data from the JSON placeholder API and display it in the browser. Also, implement the skeleton loader which will be displayed when the data is getting fetched. (No library should be used for implementing the skeleton loader)
+
+Answer) Code - 
+
+HTML - 
+  <!DOCTYPE html>
+<html>
+<head>
+  <title>Data Fetching and Skeleton Loader</title>
+  <style>
+    .skeleton {
+      background-color: #f2f2f2;
+      height: 20px;
+      margin-bottom: 10px;
+    }
+
+    .post {
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div id="loader">
+    <div class="skeleton"></div>
+    <div class="skeleton"></div>
+    <div class="skeleton"></div>
+    <div class="skeleton"></div>
+    <div class="skeleton"></div>
+  </div>
+
+  <div id="posts"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
+
+  Javascript - 
+
+var loader = document.getElementById('loader');
+var postsContainer = document.getElementById('posts');
+
+
+fetch('https://jsonplaceholder.typicode.com/posts')
+  .then(response => response.json())
+  .then(data => {
+    // Remove the loader
+    loader.style.display = 'none';
+
+    // Display the fetched posts
+    data.forEach(post => {
+      var postElement = document.createElement('div');
+      postElement.className = 'post';
+      postElement.textContent = post.title;
+      postsContainer.appendChild(postElement);
+    });
+  })
+  .catch(error => {
+    console.error('Error:', error);
+    loader.style.display = 'none';
+  });
+
+
+  
